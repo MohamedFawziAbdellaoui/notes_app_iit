@@ -24,12 +24,43 @@ class MyApp extends StatelessWidget {
               color: Colors.white,
               fontSize: 43,
               fontWeight: FontWeight.w600, //semi bold
-
             ),
           ),
           actions: [
-            
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.search,
+                color: Colors.white,
+              ),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.info,
+                color: Colors.white,
+              ),
+            ),
           ],
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset(
+                'images/rafiki.png',
+              ),
+              const Text('Create your first note',
+                  style: TextStyle(
+                    color: Colors.white,
+                  )),
+              const Text('Create your first note',
+                  style: TextStyle(
+                    color: Colors.white,
+                  )),
+            ],
+          ),
         ),
       ),
     );
