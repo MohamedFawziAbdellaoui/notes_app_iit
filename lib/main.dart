@@ -18,7 +18,9 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         HomeScreen.id: (context) => const HomeScreen(),
-        AddNoteScreen.id: (context) => const AddNoteScreen(),
+        AddNoteScreen.id: (context) => const AddNoteScreen(
+              isNewNote: false,
+            ),
       },
       initialRoute: HomeScreen.id,
     );

@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 
 class AddNoteScreen extends StatefulWidget {
-  const AddNoteScreen({super.key});
+  final String? noteTitle;
+  final String? noteContent;
+  final bool isNewNote;
+  const AddNoteScreen({
+    super.key,
+    this.noteTitle,
+    this.noteContent,
+    required this.isNewNote,
+  });
   static const String id = 'AddNoteScreen';
   @override
   State<AddNoteScreen> createState() => _AddNoteScreenState();
@@ -12,7 +20,20 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
   TextEditingController _contentController = TextEditingController();
   bool isEditMode = false;
 
-  
+  @override
+  void initState() {
+    _titleController = TextEditingController(text: widget.noteTitle);
+    _contentController = TextEditingController(text: widget.noteContent);
+    isEditMode = widget.isNewNote;
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _titleController.dispose();
+    _contentController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,14 +66,16 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
           ),
         ],
       ),
-      body: const Padding(
-        padding: EdgeInsets.symmetric(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
           horizontal: 24,
         ),
         child: Column(
           children: [
             TextField(
-              decoration: InputDecoration(
+              enabled: isEditMode,
+              controller: _titleController,
+              decoration: const InputDecoration(
                 hintText: 'title',
                 hintStyle: TextStyle(
                   color: Color(0xff9A9A9A),
@@ -67,6 +90,8 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
               maxLines: null,
             ),
             TextField(
+              enabled: isEditMode,
+              controller: _contentController,
               decoration: InputDecoration(
                 hintText: 'type something',
                 hintStyle: TextStyle(
