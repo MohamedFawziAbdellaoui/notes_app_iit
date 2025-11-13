@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/screens/add_note_screen.dart';
+import 'package:notes_app/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,55 +16,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Scaffold(
-        backgroundColor: const Color(0xff252525),
-        appBar: AppBar(
-          backgroundColor: const Color(0xff252525),
-          title: const Text(
-            "Notes",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 43,
-              fontWeight: FontWeight.w600, //semi bold
-            ),
-          ),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.search,
-                color: Colors.white,
-              ),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.info,
-                color: Colors.white,
-              ),
-            ),
-          ],
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Image.asset(
-                'images/rafiki.png',
-              ),
-              const Text('Create your first note',
-                  style: TextStyle(
-                    color: Colors.white,
-                  )),
-              const Text('Create your first note',
-                  style: TextStyle(
-                    color: Colors.white,
-                  )),
-            ],
-          ),
-        ),
-      ),
+      routes: {
+        HomeScreen.id: (context) => const HomeScreen(),
+        AddNoteScreen.id: (context) => const AddNoteScreen(),
+      },
+      initialRoute: HomeScreen.id,
     );
   }
 }
